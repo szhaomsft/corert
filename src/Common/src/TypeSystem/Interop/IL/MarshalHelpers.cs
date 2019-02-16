@@ -197,6 +197,7 @@ namespace Internal.TypeSystem.Interop
 
                 case MarshallerKind.AnsiString:
                 case MarshallerKind.AnsiStringBuilder:
+                case MarshallerKind.UTF8String:
                     return context.GetWellKnownType(WellKnownType.Byte).MakePointerType();
 
                 case MarshallerKind.BlittableArray:
@@ -542,6 +543,9 @@ namespace Internal.TypeSystem.Interop
 
                     case NativeTypeKind.LPStr:
                         return MarshallerKind.AnsiString;
+
+                    case NativeTypeKind.LPUTF8Str:
+                        return MarshallerKind.UTF8String;
 
                     case NativeTypeKind.LPTStr:
                         return MarshallerKind.UnicodeString;
